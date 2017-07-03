@@ -1,6 +1,8 @@
 
 // Libraries
 var request = require("request");
+var fs = require("fs");
+
 
 // Define console input as variables
 var repoOwner = process.argv.slice(2)[0];
@@ -18,35 +20,31 @@ var options = {
   }
 }
 
-console.log(url)
-function getContributors() {
+function saveAvatars(json) {
+  for(var i =0; i < json.length; i++){
+    var contributor = json[i]['login']
+    var contributorAvatarURL = json[i]['avatar_url']
+    downloadImagebyURL(contributorAvatarURL, contributor)
+  }
+}
+
+function downloadImagebyURL(url, contributor) {
+  request.get(url).pipe(fs.createWriteStream(`./avatar/${contributor}.jpeg`))
+}
+
+
+function getAvatars() {
   request.get(options, function(err, response, body){
     if(err) {
       console.log("there is an error:", err);
       return;
     }
-
     if (response.statusCode === 200) {
       var json = JSON.parse(body);
-       for(var i =0; i < json.length; i++){
-        var contributor = json[i]['login']
-        var contributorAvatar = json[i]['avatar_url']
-
-        console.log("contributer: ", contributor)
+      saveAvatars(json);
       }
-    }
   })
 }
-//.pipe(fs.createWriteStream('./contributers.js'));
 
-getContributors()
+getAvatars()
 
-
-// function getRepoContributors(repoOwner, repoName, cb) {
-
-// }
-
-// getRepoContributors("jquery", "jquery", function(err, result) {
-//   console.log("Errors:", err);
-//   console.log("Result:", result);
-// });
