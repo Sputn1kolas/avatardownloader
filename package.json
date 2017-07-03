@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Sputn1kolas/avatardownloader/issues"
   },
-  "homepage": "https://github.com/Sputn1kolas/avatardownloader#readme"
+  "homepage": "https://github.com/Sputn1kolas/avatardownloader#readme",
+  "dependencies": {
+    "dotenv": "^4.0.0"
+  }
 }
