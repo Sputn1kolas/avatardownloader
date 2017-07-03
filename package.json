@@ -1,0 +1,19 @@
+{
+  "name": "avatardownloader",
+  "version": "0.0.1",
+  "description": "Downloads all contributors profiles images, and saves it to a subdirectory",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sputn1kolas/avatardownloader.git"
+  },
+  "author": "me",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Sputn1kolas/avatardownloader/issues"
+  },
+  "homepage": "https://github.com/Sputn1kolas/avatardownloader#readme"
+}
